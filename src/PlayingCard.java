@@ -18,26 +18,8 @@ public class PlayingCard implements Comparable<PlayingCard>{
 	
 	// @override
 	public String toString() {
-		String returnString = this.getRank().toString() + " of " + this.getSuit().toString();
-		return returnString;
-	}
-	
-	public static boolean compareRank(PlayingCard card1, PlayingCard card2) {
-		if (card1.getRank().ordinal() != card2.getRank().ordinal()) {
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-	
-	public static boolean compareSuit(PlayingCard card1, PlayingCard card2) {
-		if (card1.getSuit().ordinal() != card2.getSuit().ordinal()) {
-			return false;
-		}
-		else {
-			return true;
-		}
+		String yourCard = this.getRank().toString() + " of " + this.getSuit().toString();
+		return yourCard;
 	}
 	
 	public int compareTo(PlayingCard card2) {
@@ -50,7 +32,15 @@ public class PlayingCard implements Comparable<PlayingCard>{
 		}
 		
 		else {
-			return 0;
+			if (this.getSuit().ordinal() > card2.getSuit().ordinal()) {
+				return 1;
+			}
+			else if (this.getSuit().ordinal() < card2.getSuit().ordinal()) {
+				return -1;
+			}
+			else {
+				return 0;
+			}
 		}
 	}
 }

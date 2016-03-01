@@ -15,9 +15,9 @@ public class Hand{
 	}
 	
 	
-	public void emptyHand(Deck deck) {
+	public void emptyHand(Deck gameDeck) {
 		for (int i = 0; i < this.hand.size(); i++) {
-			deck.deck.add(this.hand.get(i));
+			gameDeck.deck.add(this.hand.get(i));
 		}
 		this.hand.clear();
 	}
@@ -41,16 +41,12 @@ public class Hand{
 	}
 	
 	public Boolean isStraight() {
-		// index 1 = index 0 (+1)
 		Boolean firstCheck = this.getHand().get(1).getRank().ordinal() == (this.getHand().get(0).getRank().ordinal() + 1);
 		
-		// index 2 = index 1 (+1)
 		Boolean secondCheck = this.getHand().get(2).getRank().ordinal() == (this.getHand().get(1).getRank().ordinal() + 1);
 		
-		// index 3 = index 2 (+1)
 		Boolean thirdCheck = this.getHand().get(3).getRank().ordinal() == (this.getHand().get(2).getRank().ordinal() + 1);
 		
-		// index 4 = index 3 (+1)
 		Boolean fourthCheck = this.getHand().get(4).getRank().ordinal() == (this.getHand().get(3).getRank().ordinal() + 1);
 		
 		return (firstCheck && secondCheck && thirdCheck && fourthCheck);
@@ -211,6 +207,7 @@ public class Hand{
 		else if (this.isHighCard() == true) {
 			return 1;
 		}
+		// if this happens, something's gone wrong.
 		else {
 			return -1;
 		}
